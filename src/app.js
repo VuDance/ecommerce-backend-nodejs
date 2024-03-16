@@ -2,6 +2,8 @@ import compression from "compression";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import { checkOverLoad, countConnect } from "./helpers/checkConnect.js";
+import { instanceMongodb } from "./dbs/connectMongodb.js";
 
 const app = express();
 
@@ -11,6 +13,9 @@ app.use(helmet()); //security
 app.use(compression()); //performance
 
 //init db
+instanceMongodb;
+countConnect();
+checkOverLoad();
 
 //init routers
 app.get("/", (req, res) => {
