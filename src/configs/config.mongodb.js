@@ -1,5 +1,7 @@
 "use strict";
 
+import "dotenv/config.js";
+
 //level 0
 // const config={
 //     app:{
@@ -42,7 +44,9 @@ const dev = {
   db: {
     host: process.env.DEV_DB_HOST || "localhost",
     port: process.env.DEV_DB_PORT || 27017,
-    name: process.env.DEV_DB_NAME || "dbDEV",
+    name: process.env.DEV_DB_NAME || "shopDev",
+    db_username: process.env.DEV_DB_USERNAME,
+    db_password: process.env.DEV_DB_PASSWORD,
   },
 };
 const prod = {
@@ -52,7 +56,9 @@ const prod = {
   db: {
     host: process.env.PROD_DB_HOST || "localhost",
     port: process.env.PROD_DB_PORT || 27017,
-    name: process.env.PROD_DB_NAME || "dbPROD",
+    name: process.env.PROD_DB_NAME || "shopProd",
+    db_username: process.env.PROD_DB_USERNAME,
+    db_password: process.env.PROD_DB_PASSWORD,
   },
 };
 const config = { dev, prod };

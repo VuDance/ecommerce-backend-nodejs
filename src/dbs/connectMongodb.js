@@ -3,8 +3,7 @@
 import mongoose from "mongoose";
 import configMongodb from "../configs/config.mongodb.js";
 
-console.log(configMongodb);
-const connectString = `mongodb://${configMongodb.db.host}:${configMongodb.db.port}/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5`;
+const connectString = `mongodb://${configMongodb.db.db_username}:${configMongodb.db.db_password}@${configMongodb.db.host}:${configMongodb.db.port}`;
 
 class Database {
   constructor() {
@@ -12,7 +11,7 @@ class Database {
   }
   connect() {
     mongoose
-      .connect(connectString)
+      .connect(connectString, { dbName: configMongodb.db.DEV_DB_NAME })
       .then((_) => console.log("Connected to Mongo"))
       .catch((err) => console.log("Error connecting to Mongo", err));
   }
