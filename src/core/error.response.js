@@ -1,5 +1,8 @@
 "use strict";
 
+import reasonPhrases from "../utils/reasonPhrases.js";
+import statusCodes from "../utils/statusCodes.js";
+
 const StatusCode = {
   FORBIDDEN: 403,
   CONFLICT: 409,
@@ -32,4 +35,13 @@ class BadRequestError extends ErrorResponse {
     super(message, statusCode);
   }
 }
-export { ConflictRequestError, BadRequestError };
+
+class AuthFailureError extends ErrorResponse {
+  constructor(
+    message = reasonPhrases.UNAUTHORIZED,
+    statusCode = statusCodes.UNAUTHORIZED
+  ) {
+    super(message, statusCode);
+  }
+}
+export { ConflictRequestError, BadRequestError, AuthFailureError };

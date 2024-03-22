@@ -39,4 +39,4 @@ class CREATED extends SuccessResponse {
     super({ message, statusCode, reasonStatusCode, metadata });
   }
 }
-export { OK, CREATED };
+export { OK, CREATED, SuccessResponse };
