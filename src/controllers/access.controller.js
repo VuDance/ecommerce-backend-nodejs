@@ -15,5 +15,11 @@ class AccessController {
       metadata: await AccessService.SignUp(req.body),
     }).send(res);
   };
+  logout = async (req, res, next) => {
+    new SuccessResponse({
+      message: "Logout success",
+      metadata: await AccessService.Logout(req.keyStore),
+    }).send(res);
+  };
 }
 export const accessController = new AccessController();

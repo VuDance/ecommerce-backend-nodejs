@@ -44,4 +44,13 @@ class AuthFailureError extends ErrorResponse {
     super(message, statusCode);
   }
 }
-export { ConflictRequestError, BadRequestError, AuthFailureError };
+class NotFoundError extends ErrorResponse {
+  constructor(
+    message = reasonPhrases.NOT_FOUND,
+    statusCode = statusCodes.NOT_FOUND
+  ) {
+    super(message, statusCode);
+  }
+}
+
+export { ConflictRequestError, BadRequestError, AuthFailureError,NotFoundError };

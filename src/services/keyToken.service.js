@@ -1,6 +1,7 @@
 "use strict";
 
 import keyTokenModel from "../models/keyToken.model.js";
+import { Types } from "mongoose";
 
 export class KeyTokenService {
   static createToken = async ({
@@ -34,5 +35,11 @@ export class KeyTokenService {
       console.log(error);
       return error;
     }
+  };
+  static findByUserId = async (userId) => {
+    return await keyTokenModel.findOne({ user: Types.ObjectId(userId) }).lean();
+  };
+  static removeKeyById = async (id) => {
+    return await keyTokenModel.remove(id).lean();
   };
 }
